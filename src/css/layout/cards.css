@@ -1,0 +1,80 @@
+.cards {
+    background-image: url('/img/bcg-body.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.cards__list {
+    position: relative;
+    top: -50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 42px 14px;
+}
+
+.cards__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    transition: transform var(--animation);
+}
+
+.cards__item:hover {
+    transform: scale(1.1);
+}
+
+.cards__item::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 0;
+
+    display: block;
+    width: 100px;
+    height: 100px;
+
+    border: 1px solid rgba(220, 86, 197, 0.3);
+    border-radius: 50px 0;
+}
+
+.cards__item__image {
+    width: 128px;
+    height: 161px;
+}
+
+.cards__item__title {
+    color: #DC56C5;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.cards__item__date {
+    color: #FFF;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.cards__item__location__link {
+    color: #FFF;
+    font-size: 12px;
+    font-weight: 600;
+    transition: color var(--animation);
+}
+
+.cards__item__location__link:hover {
+    color: #DC56C5;
+}
+
+.cards__item__location__icon {
+    width: 6px;
+    height: 9px;
+    fill: #FFF;
+}
