@@ -74,7 +74,44 @@
 }
 
 .cards__item__location__icon {
-    width: 6px;
-    height: 9px;
+    width: 7px;
+    height: 10px;
     fill: #FFF;
+}
+
+@media screen and (min-width: 768px) {
+    .cards__list {
+        gap: 58px 27px;
+    }
+
+    .cards__item::after {
+        top: -14px;
+        right: -14px;
+
+        width: 153px;
+        height: 143px;
+    }
+
+    .cards__item__image {
+        width: 180px;
+        height: 227px;
+    }
+
+    .cards__item__title {
+        font-size: 16px;
+    }
+
+    .cards__item__date {
+        font-size: 16px;
+    }
+
+    .cards__item__location__link {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .cards__list {
+        gap: 63px 70px;
+    }
 }
