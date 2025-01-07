@@ -1,4 +1,4 @@
-.cards {
+.cards__section {
     background-image: url('/img/bcg-body.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -112,6 +112,7 @@
 
 @media screen and (min-width: 1200px) {
     .cards__list {
+        top: 0;
         gap: 63px 70px;
     }
 }
