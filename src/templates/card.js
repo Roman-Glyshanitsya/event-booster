@@ -1,6 +1,6 @@
 export default function cardMarkup(cards) {
   const markup = cards.map(card => {
-    const imageUrl = card.images[1]?.url || '/img/default-image.png';
+    const imageUrl = card.images[0]?.url || '/img/default-image.png';
     const nameArtist = card.name || 'No Name Available';
     const eventDate = card.dates.start.localDate || 'Unknown Date';
     const location = card._embedded?.venues[0]?.name || 'Unknown Location';

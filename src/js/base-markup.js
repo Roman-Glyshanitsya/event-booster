@@ -1,21 +1,39 @@
-// import EventsApiService from './events-service-api';
-// import cardMarkup from '../templates/card';
+import EventsApiService from './events-service-api';
+import cardMarkup from '../templates/card';
 
-// const cardsList = document.querySelector('.cards__list');
+const cardsList = document.querySelector('.cards__list');
+const searchForm = document.querySelector('.header__form');
+const searchInput = document.getElementById('searchQuery');
 
-// const eventsApiService = new EventsApiService();
+const eventsApiService = new EventsApiService();
 
-// export async function renderEvents() {
-//   try {
-//     const data = await eventsApiService.fetchEvents();
-//     const events = data._embedded?.events || [];
+renderEvents();
 
-//     const markup = cardMarkup(events);
+searchForm.addEventListener('submit', onSearchQuery);
 
-//     cardsList.insertAdjacentHTML('beforeend', markup);
-//   } catch (error) {
-//     console.error('Error rendering events: ', error);
-//   }
-// }
+async function onSearchQuery(e) {
+  e.preventDefault();
 
-// renderEvents();
+  eventsApiService.searchQuery = searchInput.value.trim();
+
+  clearEventsList();
+
+  await renderEvents();
+}
+
+export default async function renderEvents() {
+  try {
+    const data = await eventsApiService.fetchEvents();
+    const events = data._embedded?.events || [];
+
+    const markup = cardMarkup(events);
+
+    cardsList.insertAdjacentHTML('beforeend', markup);
+  } catch (error) {
+    console.error('Error rendering events: ', error);
+  }
+}
+
+function clearEventsList() {
+  cardsList.innerHTML = '';
+}
