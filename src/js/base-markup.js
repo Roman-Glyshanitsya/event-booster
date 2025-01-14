@@ -1,5 +1,8 @@
 import EventsApiService from './events-service-api';
 import cardMarkup from '../templates/card';
+import { renderPagination } from './pagination';
+
+console.log(renderPagination);
 
 const cardsList = document.querySelector('.cards__list');
 const searchForm = document.querySelector('.header__form');
@@ -29,6 +32,12 @@ export default async function renderEvents() {
     const markup = cardMarkup(events);
 
     cardsList.insertAdjacentHTML('beforeend', markup);
+
+    renderPagination(
+      eventsApiService.totalPages,
+      eventsApiService.page,
+      onPageClick
+    );
   } catch (error) {
     console.error('Error rendering events: ', error);
   }
@@ -36,4 +45,11 @@ export default async function renderEvents() {
 
 function clearEventsList() {
   cardsList.innerHTML = '';
+}
+
+function onPageClick() {
+  eventsApiService.page = newPage;
+
+  clearEventsList();
+  renderEvents();
 }

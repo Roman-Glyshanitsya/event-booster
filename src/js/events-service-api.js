@@ -3,7 +3,7 @@ export default class EventsApiService {
   #BASE_URL = 'https://app.ticketmaster.com/discovery/v2/events.json';
 
   constructor() {
-    this.page = 1;
+    this.page = 0;
     this.pageSize = 12;
     this.searchQuery = '';
   }
@@ -16,7 +16,7 @@ export default class EventsApiService {
       size: this.pageSize,
     });
 
-    const url = `${this.#BASE_URL}?${searchParams}&classificationName=music&`;
+    const url = `${this.#BASE_URL}?${searchParams}&classificationName=music`;
 
     const response = await fetch(url);
 
