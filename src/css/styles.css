@@ -8,8 +8,10 @@
 @import url('./base/reset.css');
 @import url('./base/common.css');
 @import url('./base/container.css');
+@import url('./base/backdrop.css');
 
 /* Sections style */
 @import url('./layout/header.css');
 @import url('./layout/cards.css');
 @import url('./layout/pagination.css');
+@import url('./layout/modal.css');
