@@ -4,7 +4,7 @@ export default class EventsApiService {
 
   constructor() {
     this.page = 0;
-    this.pageSize = 6;
+    this.pageSize = 8;
     this.searchQuery = '';
   }
 

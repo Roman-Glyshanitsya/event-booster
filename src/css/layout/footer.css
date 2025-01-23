@@ -1,0 +1,26 @@
+.footer {
+    margin-top: 67px;
+    margin-bottom: 27px;
+}
+
+.footer__text {
+    color: #939393;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0 auto;
+}
+
+/* tablet */
+@media screen and (min-width: 768px) {
+    .footer {
+        margin-top: 65px;
+        margin-bottom: 18px;
+    }
+
+    .footer__text {
+        width: 530px;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}

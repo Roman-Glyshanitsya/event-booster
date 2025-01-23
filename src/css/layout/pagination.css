@@ -30,3 +30,9 @@
     color: #999;
     font-size: 14px;
 }
+
+@media screen and (min-width: 1200px) {
+    .cards__pagination-list {
+        margin-top: 85px;
+    }
+}

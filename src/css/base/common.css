@@ -9,3 +9,10 @@
 
   --animation: 350ms linear;
 }
+
+body {
+  background-image: url('/img/bcg-body.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
