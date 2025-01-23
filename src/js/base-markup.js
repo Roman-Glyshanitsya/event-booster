@@ -35,12 +35,12 @@ export default async function renderEvents() {
     cardsList.insertAdjacentHTML('beforeend', markup);
 
     const totalPages = data.page.totalPages;
-    console.log(
-      'Total Pages:',
-      totalPages,
-      'Current Page:',
-      eventsApiService.page
-    );
+    // console.log(
+    //   'Total Pages:',
+    //   totalPages,
+    //   'Current Page:',
+    //   eventsApiService.page
+    // );
 
     renderPagination(totalPages, eventsApiService.page, onPageClick);
   } catch (error) {

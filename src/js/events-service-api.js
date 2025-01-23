@@ -8,7 +8,7 @@ export default class EventsApiService {
     this.searchQuery = '';
   }
 
-  async fetchEvents() {
+  async fetchEvents({ id = null } = {}) {
     const searchParams = new URLSearchParams({
       apikey: this.#API_KEY,
       keyword: this.searchQuery,
@@ -16,7 +16,9 @@ export default class EventsApiService {
       size: this.pageSize,
     });
 
-    const url = `${this.#BASE_URL}?${searchParams}&classificationName=music`;
+    const url = id
+      ? `${this.#BASE_URL}/${id}?${searchParams}`
+      : `${this.#BASE_URL}?${searchParams}&classificationName=music`;
 
     const response = await fetch(url);
 

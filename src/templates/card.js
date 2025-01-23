@@ -7,7 +7,7 @@ export default function cardMarkup(cards) {
     const eventUrl = card.url || '#';
 
     return `
-        <li class="cards__item">
+        <li class="cards__item" data-id="${card.id}">
         <img
           src="${imageUrl}"
           alt="${nameArtist}"

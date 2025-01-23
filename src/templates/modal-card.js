@@ -1,4 +1,5 @@
-<div class="backdrop is-hidden">
+export default function modalMarkup(modal) {
+  return `
   <div class="info__modal">
     <button class="info__modal__close-btn">x</button>
     <img src="/img/modal-small.jpg" alt="" class="info__modal__small-img" />
@@ -33,4 +34,5 @@
       MORE FROM THIS AUTHOR
     </button>
   </div>
-</div>
+    `;
+}

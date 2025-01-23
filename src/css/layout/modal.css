@@ -4,17 +4,24 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    /* width: 272px;
-    height: 90vh; */
     width: 272px;
-    height: 915px;
-    overflow-y: auto;
+    height: 90vh;
+    -ms-overflow-style: none;
+    /* for Internet Explorer, Edge */
+    scrollbar-width: none;
+    /* for Firefox */
+    overflow-y: scroll;
 
     border-radius: 150px 0px;
     background-color: #FFF2FD;
     padding: 75px 12px 104px;
 
     transition: transform var(--animation);
+}
+
+.info__modal::-webkit-scrollbar {
+    display: none;
+    /* for Chrome, Safari, and Opera */
 }
 
 .info__modal__close-btn {
@@ -95,12 +102,91 @@
 @media screen and (min-width: 768px) {
     .info__modal {
         width: 595px;
-        height: 831px;
         border-radius: 300px 0px;
         padding: 28px 17px 56px 50px;
     }
 
+    .info__modal__small-img {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 43px;
+    }
+
+    .info__modal__content__container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 13px;
+    }
+
     .info__modal__poster {
         display: block;
+        width: 233px;
+        height: 416px;
+        object-fit: cover;
+    }
+
+    .info__modal__title {
+        text-align: start;
+    }
+
+    .info__modal__text {
+        width: 265px;
+        text-align: start;
+    }
+
+    .info__modal__buy-button {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .info__modal__more-button {
+        width: 255px;
+    }
+}
+
+/* desktop */
+@media screen and (min-width: 1200px) {
+    .info__modal {
+        width: 930px;
+        padding: 62px 30px 62px 30px;
+    }
+
+    .info__modal__close-btn {
+        top: 30px;
+        right: 30px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .info__modal__small-img {
+        width: 132px;
+        height: 132px;
+    }
+
+    .info__modal__content__container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+    .info__modal__poster {
+        width: 360px;
+        height: 641px;
+    }
+
+    .info__modal__title {
+        font-size: 24px;
+        text-align: start;
+        margin-top: 20px;
+        margin-bottom: 7px;
+    }
+
+    .info__modal__text {
+        width: 450px;
+        font-size: 18px;
+    }
+
+    .info__modal__buy-button {
+        margin-top: 20px;
     }
 }
