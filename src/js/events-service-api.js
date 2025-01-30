@@ -8,7 +8,7 @@ export default class EventsApiService {
     this.searchQuery = '';
   }
 
-  async fetchEvents({ id = null } = {}) {
+  async fetchEvents() {
     const searchParams = new URLSearchParams({
       apikey: this.#API_KEY,
       keyword: this.searchQuery,
@@ -16,16 +16,28 @@ export default class EventsApiService {
       size: this.pageSize,
     });
 
-    const url = id
-      ? `${this.#BASE_URL}/${id}?${searchParams}`
-      : `${this.#BASE_URL}?${searchParams}&classificationName=music`;
+    const url = `${this.#BASE_URL}?${searchParams}&classificationName=music`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch events: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  async fetchEventsById(id) {
+    const searchParams = new URLSearchParams({
+      apikey: this.#API_KEY,
+    });
+
+    const url = `https://app.ticketmaster.com/discovery/v2/events/${id}.json?${searchParams}`;
 
     const response = await fetch(url);
 
     if (!response.ok) {
-      throw new Error('Faild to fetch events');
+      throw new Error(`Failed to fetch event by ID: ${response.status}`);
     }
-
     return response.json();
   }
 }

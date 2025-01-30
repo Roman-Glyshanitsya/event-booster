@@ -1,8 +1,10 @@
 export default function modalMarkup(modal) {
+  const smallImageUrl = modal.images[1]?.url || '/img/default-image.png';
+
   return `
   <div class="info__modal">
     <button class="info__modal__close-btn">x</button>
-    <img src="${modal.images[0].url}" alt="${
+    <img src="${smallImageUrl}" alt="${
     modal.name
   }" class="info__modal__small-img" />
     <div class="info__modal__content__container">
@@ -32,7 +34,7 @@ export default function modalMarkup(modal) {
         <p class="info__modal__text">${
           modal.priceRanges?.[0]?.min || 'N/A'
         } - ${modal.priceRanges?.[0]?.max || 'N/A'} ${
-    event.priceRanges?.[0]?.currency || ''
+    modal.priceRanges?.[0]?.currency || ''
   }</p>
         <button class="info__modal__buy-button" type="button">
           BUY TICKETS
