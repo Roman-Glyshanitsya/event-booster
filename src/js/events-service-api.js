@@ -14,6 +14,7 @@ export default class EventsApiService {
       keyword: this.searchQuery,
       page: this.page,
       size: this.pageSize,
+      sort: 'random',
     });
 
     const url = `${this.#BASE_URL}?${searchParams}&classificationName=music`;

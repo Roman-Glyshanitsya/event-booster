@@ -14,12 +14,9 @@ export default async function openModalCard(e) {
   if (!card) return;
 
   const eventId = card.dataset.id;
-  console.log(eventId);
 
   try {
     const eventData = await eventsApiService.fetchEventsById(eventId);
-
-    console.log(eventData);
 
     const markup = modalMarkup(eventData);
     modalCardEl.insertAdjacentHTML('beforeend', markup);
