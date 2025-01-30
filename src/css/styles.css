@@ -12,6 +12,7 @@
 
 /* Sections style */
 @import url('./layout/header.css');
+@import url('./components/form.css');
 @import url('./layout/cards.css');
 @import url('./layout/footer.css');
 @import url('./layout/pagination.css');
