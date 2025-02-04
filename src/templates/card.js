@@ -1,4 +1,4 @@
-import svgUrl from '../img/icons/symbol-defs.svg';
+import svgUrl from '/img/icons/symbol-defs.svg';
 
 export default function cardMarkup(cards) {
   const markup = cards.map(card => {
