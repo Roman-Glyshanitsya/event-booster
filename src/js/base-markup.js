@@ -30,7 +30,7 @@ async function onSearchQuery(e) {
   await renderEvents();
 }
 
-export default async function renderEvents({ countryCode = '' } = {}) {
+export default async function renderEvents({ countryCode } = {}) {
   try {
     if (countryCode) {
       eventsApiService.searchCountry = countryCode;
@@ -39,9 +39,13 @@ export default async function renderEvents({ countryCode = '' } = {}) {
     const data = await eventsApiService.fetchEvents();
     const events = data._embedded?.events || [];
 
-    const markup = cardMarkup(events);
-
     clearEventsList();
+
+    if (events.length === 0) {
+      displayNoEventsMessage();
+      return;
+    }
+    const markup = cardMarkup(events);
     cardsList.insertAdjacentHTML('beforeend', markup);
 
     const totalPages = data.page.totalPages;
@@ -66,6 +70,11 @@ function onPageClick(newPage) {
 
   clearEventsList();
   renderEvents();
+}
+
+function displayNoEventsMessage() {
+  cardsList.innerHTML =
+    '<li class="no-events-message">Sorry, we didn&#39;t find any events here</li>';
 }
 
 searchCountryInput.addEventListener('input', onSelectCountryFieldHdlr);

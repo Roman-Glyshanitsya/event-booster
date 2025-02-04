@@ -138,6 +138,13 @@
         23px 0 20px -23px rgba(0, 0, 0, 0.6), inset 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
+.no-events-message {
+    font-size: 18px;
+    color: #ff4d4f;
+    text-align: center;
+    padding: 20px;
+}
+
 @media screen and (min-width: 768px) {
     .header__form {
         flex-direction: row;
