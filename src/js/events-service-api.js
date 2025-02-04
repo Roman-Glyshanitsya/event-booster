@@ -6,12 +6,14 @@ export default class EventsApiService {
     this.page = 0;
     this.pageSize = 8;
     this.searchQuery = '';
+    this.searchCountry = '';
   }
 
   async fetchEvents() {
     const searchParams = new URLSearchParams({
       apikey: this.#API_KEY,
       keyword: this.searchQuery,
+      countryCode: this.searchCountry,
       page: this.page,
       size: this.pageSize,
       sort: 'random',

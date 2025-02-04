@@ -30,23 +30,21 @@ async function onSearchQuery(e) {
   await renderEvents();
 }
 
-export default async function renderEvents() {
+export default async function renderEvents({ countryCode = '' } = {}) {
   try {
+    if (countryCode) {
+      eventsApiService.searchCountry = countryCode;
+    }
+
     const data = await eventsApiService.fetchEvents();
     const events = data._embedded?.events || [];
 
     const markup = cardMarkup(events);
 
+    clearEventsList();
     cardsList.insertAdjacentHTML('beforeend', markup);
 
     const totalPages = data.page.totalPages;
-    // console.log(
-    //   'Total Pages:',
-    //   totalPages,
-    //   'Current Page:',
-    //   eventsApiService.page
-    // );
-
     renderPagination(totalPages, eventsApiService.page, onPageClick);
   } catch (error) {
     console.error('Error rendering events: ', error);
@@ -97,41 +95,15 @@ function onSelectCountryBlurHdlr(e) {
   searchCountryInput.classList.remove('select__field');
 }
 
-async function renderEventsByCountry() {
-  try {
-    const data = await eventsApiService.fetchEvents();
-    const events = data._embedded?.events || [];
-
-    const markup = cardMarkup(events);
-
-    cardsList.insertAdjacentHTML('beforeend', markup);
-
-    const totalPages = data.page.totalPages;
-    // console.log(
-    //   'Total Pages:',
-    //   totalPages,
-    //   'Current Page:',
-    //   eventsApiService.page
-    // );
-
-    renderPagination(totalPages, eventsApiService.page, onPageClick);
-  } catch (error) {
-    console.error('Error rendering events: ', error);
-  }
-}
-
 async function onCountrylistHdlr(e) {
   e.preventDefault();
 
+  if (!e.target.dataset.id) return; // Перевіряємо, чи є код країни
+
   const countryCode = e.target.dataset.id;
-
-  console.log(countryCode);
-
   searchCountryInput.placeholder = e.target.textContent;
 
-  console.log(e.target.textContent);
-
-  // clearEventsList();
-  // clearPagination();
-  // renderEventsByCountry();
+  clearEventsList();
+  clearPagination();
+  await renderEvents({ countryCode });
 }
