@@ -25,9 +25,7 @@ export default function cardMarkup(cards) {
           rel="noopener noreferrer"
         >
           <svg class="cards__item__location__icon">
-            <use href="${
-              new URL('../img/icons/symbol-defs.svg', import.meta.url).href
-            }#icon-location"></use>
+            <use href="${iconPath}#icon-location"></use>
           </svg>
           ${location}</a
         >
