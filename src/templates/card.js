@@ -1,4 +1,5 @@
 import svgUrl from '../img/icons/symbol-defs.svg';
+const iconPath = new URL(svgUrl, import.meta.url).href;
 
 export default function cardMarkup(cards) {
   const markup = cards.map(card => {
@@ -24,7 +25,9 @@ export default function cardMarkup(cards) {
           rel="noopener noreferrer"
         >
           <svg class="cards__item__location__icon">
-            <use href="${svgUrl}#icon-location"></use>
+            <use href="${
+              new URL('../img/icons/symbol-defs.svg', import.meta.url).href
+            }#icon-location"></use>
           </svg>
           ${location}</a
         >
