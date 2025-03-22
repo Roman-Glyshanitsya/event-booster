@@ -25,7 +25,6 @@ async function onSearchQuery(e) {
   eventsApiService.page = 0;
 
   clearEventsList();
-  clearPagination();
 
   await renderEvents();
 }
@@ -57,9 +56,6 @@ export default async function renderEvents({ countryCode } = {}) {
 
 function clearEventsList() {
   cardsList.innerHTML = '';
-}
-
-function clearPagination() {
   paginationList.innerHTML = '';
 }
 
@@ -113,6 +109,5 @@ async function onCountrylistHdlr(e) {
   searchCountryInput.placeholder = e.target.textContent;
 
   clearEventsList();
-  clearPagination();
   await renderEvents({ countryCode });
 }

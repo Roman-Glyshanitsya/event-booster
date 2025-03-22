@@ -4,11 +4,12 @@ export default class EventsApiService {
 
   constructor() {
     this.page = 0;
-    this.pageSize = 8;
+    this.pageSize = 12;
     this.searchQuery = '';
     this.searchCountry = '';
   }
 
+  // Searching input
   async fetchEvents() {
     const searchParams = new URLSearchParams({
       apikey: this.#API_KEY,
@@ -29,6 +30,7 @@ export default class EventsApiService {
     return response.json();
   }
 
+  // Choose Country input
   async fetchEventsById(id) {
     const searchParams = new URLSearchParams({
       apikey: this.#API_KEY,
